@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/presentation/screens/history_detail_screen.dart';
 import 'package:notes/presentation/widgets/constructor_widget/custom_quicksand.dart';
 import 'package:notes/presentation/widgets/screen_display/note_display.dart';
 
@@ -31,7 +32,20 @@ class HistoryScreen extends StatelessWidget {
             } else if (state is Loaded) {
               return ListView(
                 children: state.note.map((e) {
-                  return NoteDisplay(notes: e);
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) => BlocProvider<NoteCubit>(
+                                  create: (context) =>
+                                      sl<NoteCubit>()..getHistory(),
+                                  child: HistoryDetailScreen(notes: e),
+                                )),
+                          ),
+                        );
+                      },
+                      child: NoteDisplay(notes: e));
                 }).toList(),
               );
             }

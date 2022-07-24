@@ -108,6 +108,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                   padding: const EdgeInsets.all(8),
                   child: CustomTextField(
                     controller: content,
+                    readOnly: false,
                     labelText: 'Start Typing',
                     fontSize: 20,
                   ),

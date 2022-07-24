@@ -33,7 +33,6 @@ class _NoteDisplayState extends State<NoteDisplay> {
               context.read<NoteCubit>().delNote(widget.notes.title);
               context.read<NoteCubit>().delHistory(widget.notes.content);
               context.read<NoteCubit>().getNote();
-           
             },
             icon: Icon(Icons.delete, color: Colors.red.shade300)),
       ),

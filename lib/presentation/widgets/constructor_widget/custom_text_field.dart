@@ -41,19 +41,22 @@ class CustomTextField extends StatelessWidget {
   final double? hintSize;
   final double? fontSize;
   final FontWeight? fontWeight;
-  const CustomTextField({
-    Key? key,
-    this.controller,
-    this.labelText,
-    this.hintSize,
-    this.fontSize,
-    this.fontWeight,
-  }) : super(key: key);
+  final bool readOnly;
+  const CustomTextField(
+      {Key? key,
+      this.controller,
+      this.labelText,
+      this.hintSize,
+      this.fontSize,
+      this.fontWeight,
+      required this.readOnly})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      readOnly: readOnly,
       style: TextStyle(fontSize: fontSize, fontWeight: fontWeight),
       maxLines: 30,
       minLines: 1,

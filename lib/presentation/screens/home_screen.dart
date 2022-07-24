@@ -35,19 +35,17 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               children: [
                 IconButton(
-                    onPressed: () async {
-                      bool isRefreshed = await Navigator.push(
+                    onPressed: () {
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: ((context) => BlocProvider<NoteCubit>(
-                                create: (context) => sl<NoteCubit>(),
+                                create: (context) =>
+                                    sl<NoteCubit>()..getHistory(),
                                 child: const HistoryScreen(),
                               )),
                         ),
                       );
-                      if (isRefreshed) {
-                        context.read<NoteCubit>().getNote();
-                      }
                     },
                     icon: const Icon(Icons.history)),
                 IconButton(
