@@ -75,7 +75,23 @@ class _HomeScreenState extends State<HomeScreen> {
             return const Center(child: CircularProgressIndicator());
           }
           if (state is Empty) {
-            return const Center(child: Text('Empty'));
+            return Column(
+              children: [
+                const SizedBox(height: 250),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(9),
+                  child: Image.asset(
+                    'assets/image/empty.png',
+                    width: 100,
+                    height: 100,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Center(child: Text('Empty')),
+                ),
+              ],
+            );
           } else if (state is Loaded) {
             return ListView(
               children: state.note.map((e) {
